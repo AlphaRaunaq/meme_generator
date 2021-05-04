@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" >
+        <% for (const i of memes){ %>
+            <img  class="new-image"id="<%= i.id %>" src="<%= i.url %>" alt="">    
+            <% } %> 
+        <form action="/generate" method="POST" enctype="application/x-www-form-urlencoded"> 
+            <div class="input-container">
+                <label for="">TEMPLATE ID</label>
+                <input  id="new_id" required name="template_id" class="" type="text">
+            </div>
+            <div class="input-container">
+                <label for="">USERNAME</label>
+                <input required name="username" class="" type="text">
+            </div>
+            <div class="input-container">
+                <label for="">PASSWORD</label>
+                <input required name="password" class="" type="password">
+            </div>
+            <div class="input-container">
+                <label for="">TEXT0</label>
+                <input required name="text0" class="" type="text">
+            </div>
+            <div class="input-container">
+                <label for="">TEXT1</label>
+                <input required name="text1" class="" type="text">
+            </div>
+            <button type="submit" class="btn-primary">Send</button>
+        </form>
+    </div>
+</body>
+<script>
+    var imgs = document.getElementsByClassName("new-image");
+    var t_id = document.getElementById("new_id");
+    for(const i of imgs){
+        i.addEventListener('click',(e) => {
+            t_id.value = i.id;
+            console.log(i.id, t_id.value);
+        });
+    }
+</script>
+
+</html>
