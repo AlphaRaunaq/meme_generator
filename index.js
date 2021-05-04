@@ -1,6 +1,7 @@
 const axios = require('axios').default;
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 3000;
 const _ = require('lodash');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +44,6 @@ app.post("/generate", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is listening at 3000");
 });
